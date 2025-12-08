@@ -139,7 +139,103 @@ function getBooks() {
   return data;
 }
 
-function getBook(id) {}
-return data.find((d) => {
-  d.id === id;
-});
+function getBook(id) {
+  return data.find((d) => d.id === id);
+}
+
+// Destructring
+// const books = getBooks();
+const book = getBook(2);
+
+// Oject Destructring
+// const title = book.title;
+// const author = book.author;
+// console.log(author, title);
+
+const { author, title, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+console.log(author, title, genres);
+
+// Array Destructring
+// const primaryGenres = genres[0];
+// const secondaryGenres = genres[1];
+// console.log(primaryGenres,secondaryGenres);
+
+// const [primaryGenres, secondaryGenres] = genres;
+// console.log(primaryGenres, secondaryGenres);
+
+// Rest Operator
+// const [primaryGenres, secondaryGenres, ...otherGenres] = genres;
+// console.log(primaryGenres, secondaryGenres, otherGenres);
+
+// const [primaryGenres, ...otherGenres] = genres;
+// console.log(primaryGenres, otherGenres);
+
+// Spread Operator
+// newGenres = [genres, "epic fantasy"];
+// newGenres;
+
+// newGenres = [...genres, "epic fantasy"];
+// newGenres;
+
+// newGenres = ["epic fantasy", ...genres];
+// newGenres;
+
+// const updatedBook = { book, moviePublicationDate: "2002-12-19", pages: 1210 };
+// updatedBook;
+
+const updatedBook = {
+  ...book,
+  // adding new property
+  moviePublicationDate: "2002-12-19",
+  //overwriting an existing prop
+  pages: 1210,
+};
+updatedBook;
+
+// Arrow Function
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}-page a long book,  was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adaptive as a movie`;
+summary;
+
+//  Ternary Operators
+const pagesRange = pages > 1000 ? "Over Thousand" : "less than 1000";
+pagesRange;
+console.log(`The book has ${pages} pages `);
+
+// Shor circuit and logical operator
+// And operator
+console.log(true && "Some String");
+console.log(false && "Some String");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// falsy value 0, '', null, undefined,
+console.log("asif" && "some string");
+console.log(0 && "some Thing");
+
+// Or Operator
+console.log(true || "Some String");
+console.log(false || "Some String");
+
+// falsy value 0, '', null, undefined,
+console.log("asif" || "some string");
+console.log(0 || "some Thing");
+console.log(book.translations.spanish);
+
+const spanishTranslations = book.translations.spanish || "Not Translated";
+spanishTranslations;
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no Data";
+countWrong;
+
+//  Nullish coalecsing operator
+const count = book.reviews.librarything.reviewsCount ?? "no Data";
+count;
