@@ -1,0 +1,58 @@
+.card {
+  width: 350px;
+  padding: 20px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 5px 20px rgba(36, 0, 0, 0.541);
+  font-family: sans-serif;
+}
+
+.img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+}
+
+.blue {
+  background: #4b7bec;
+}
+.yellow {
+  background: #f7b731;
+}
+.green {
+  background: #20bf6b;
+}
+.red {
+  background: #eb3b5a;
+}
+.cyan {
+  background: #2d98da;
+}
+.orange {
+  background: #fa8231;
+}

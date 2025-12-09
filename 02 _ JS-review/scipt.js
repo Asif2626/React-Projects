@@ -143,9 +143,10 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 // Destructring
 // const books = getBooks();
-const book = getBook(2);
+const book = getBook(3);
 
 // Oject Destructring
 // const title = book.title;
@@ -230,12 +231,44 @@ console.log("asif" || "some string");
 console.log(0 || "some Thing");
 console.log(book.translations.spanish);
 
-const spanishTranslations = book.translations.spanish || "Not Translated";
-spanishTranslations;
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no Data";
-countWrong;
+// const spanishTranslations = book.translations.spanish || "Not Translated";
+// spanishTranslations;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no Data";
+// countWrong;
 
-//  Nullish coalecsing operator
-const count = book.reviews.librarything.reviewsCount ?? "no Data";
-count;
+// //  Nullish coalecsing operator
+// const count = book.reviews.librarything.reviewsCount ?? "no Data";
+// count;
+
+// Optional Changing
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+console.log(getTotalReviewCount(book));
+*/
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+// Map mathed
+const books = getBooks();
+books;
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+const title = books.map((book) => book.title);
+title;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviews: getTotalReviewCount(book),
+}));
+essentialData;
+
+// Filter Method
