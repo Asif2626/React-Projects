@@ -16,5 +16,5 @@ Starting => Task
 # Challenges
 
 Challenges => Practice
-01- Profile-Card (v1)
-02- Date-Counter (v1)
+01- Profile-Card 
+02- Date-Counter 
