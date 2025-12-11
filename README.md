@@ -20,6 +20,7 @@ Challenges => Practice
 01- Profile-Card
 02- Date-Counter
 
-# Excercise
+# Exercise
 
+Exercise => Practice
 01# Flash Cards
