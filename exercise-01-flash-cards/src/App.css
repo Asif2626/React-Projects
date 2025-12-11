@@ -1,0 +1,29 @@
+.flashcards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+
+.flashcards-container div {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcards-container .selected {
+  background-color: #181bbb;
+  color: white;
+}
+
+.flashcards-container div p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
