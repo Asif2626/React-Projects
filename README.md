@@ -22,5 +22,5 @@ Challenges => Practice #
 
 # Exercise
 
-Exercise => Practice #
+Exercise => Solve #
 01- Flash Cards
