@@ -6,7 +6,7 @@
 
 # React-Tasks
 
-Starting => Task
+Starting => Task #
 00- myFirstReactApp
 01- React
 02- JS-Review
@@ -16,11 +16,11 @@ Starting => Task
 
 # Challenges
 
-Challenges => Practice
+Challenges => Practice #
 01- Profile-Card
 02- Date-Counter
 
 # Exercise
 
-Exercise => Practice
-01# Flash Cards
+Exercise => Practice #
+01- Flash Cards
