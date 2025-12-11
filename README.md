@@ -17,5 +17,9 @@ Starting => Task
 # Challenges
 
 Challenges => Practice
-01- Profile-Card 
-02- Date-Counter 
+01- Profile-Card
+02- Date-Counter
+
+# Excercise
+
+01# Flash Cards
