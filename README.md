@@ -11,14 +11,14 @@ Starting => Task #
 01- React
 02- JS-Review
 03- Pizza-menu
-04- Steps
+04- Steps => version: V(1) and V(2)
 05- Travel-List
 
 # Challenges
 
 Challenges => Practice #
 01- Profile-Card
-02- Date-Counter
+02- Date-Counter => version: V(1) and V(2)
 
 # Exercise
 
