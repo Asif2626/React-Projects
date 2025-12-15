@@ -1,0 +1,63 @@
+/* ITEM CONTAINER */
+.item {
+  padding: 20px;
+  margin: 16px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+}
+
+/* background when open */
+.item.open {
+  background-color: #e8f4ff;
+}
+
+/* FIRST ROW */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* NUMBER */
+.number {
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  min-width: 24px;
+}
+
+/* QUESTION TEXT */
+.text {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+/* ICON (+ / -) */
+.icon {
+  font-size: 22px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* SECOND ROW (ANSWER) */
+.content-box {
+  margin-top: 16px;
+  margin-left: 38px;
+  padding: 14px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* OPTIONAL: container spacing */
+.list {
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+}
