@@ -27,4 +27,4 @@ Challenges => Practice #
 
 Exercise => Solve #
 01- Flash Cards
-02- Accordion Component
+02- Accordion Component => version: V(1) and V(2)
