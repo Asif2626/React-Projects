@@ -1,0 +1,93 @@
+/* Reset + base styles */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App container */
+.app {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.app h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Input blocks */
+div > div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+/* Inputs & selects */
+input,
+select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+/* Output */
+h3 {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #222;
+  background: #f4f6ff;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+/* Reset button */
+button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #574eea;
+}
+
+button:active {
+  transform: scale(0.98);
+}
