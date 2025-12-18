@@ -60,25 +60,10 @@ const tempQuery = "interstellar";
 export default function App_v1() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedID, setSelectedID] = useState(null);
-
-  /*
-  useEffect(() => {
-    console.log("After initial Render");
-  }, []);
-
-  useEffect(() => {
-    console.log("After every Render");
-  });
-
-  useEffect(() => {
-    console.log("D");
-  }, [query]);
-
-  console.log("During Render"); */
 
   function handleSelectMovie(id) {
     setSelectedID((selectedId) => (selectedId === id ? null : id));
@@ -96,22 +81,16 @@ export default function App_v1() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
-  // function handleAddWatched(movie) {
-  //   setWatched((watched) =>
-  //     watched.some((m) => m.imdbID === movie.imdbID)
-  //       ? watched
-  //       : [...watched, movie]
-  //   );
-  // }
-
   useEffect(() => {
+    const controller = new AbortController();
     async function fetchMovies() {
       try {
         setIsLoading(true);
         setError("");
 
         const res = await fetch(
-          `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `https://www.omdbapi.com/?apikey=${KEY}&s=${query} `,
+          { signal: controller.signal }
         );
 
         if (!res.ok)
@@ -122,11 +101,12 @@ export default function App_v1() {
         if (data.Response === "False") throw new Error(data.Error);
 
         setMovies(data.Search);
-      } catch (error) {
-        if (error.message === "Failed to fetch") {
+      } catch (err) {
+        if (err.name === "AbortError") return;
+        if (err.message === "Failed to fetch") {
           setError("Failed to fetch movies. Check your internet connection.");
         } else {
-          setError(error.message);
+          setError(err.message);
         }
       } finally {
         setIsLoading(false);
@@ -139,7 +119,11 @@ export default function App_v1() {
       return;
     }
 
+    handleCloseMovie();
     fetchMovies();
+    return function () {
+      controller.abort();
+    };
   }, [query]);
 
   return (
@@ -314,6 +298,22 @@ function MovieDetails({ selectedID, onCloseMovie, onAddWatched, watched }) {
   }
 
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (
+        ["Escape", "Enter", "KeyD", "ShiftLeft", "ShiftRight"].includes(e.code)
+      ) {
+        onCloseMovie();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    // Cleanup when component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onCloseMovie]);
+
+  useEffect(() => {
     const getMovieDetails = async () => {
       setIsLoading(true);
       const res = await fetch(
@@ -325,6 +325,18 @@ function MovieDetails({ selectedID, onCloseMovie, onAddWatched, watched }) {
     };
     getMovieDetails();
   }, [selectedID]);
+
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie | ${title}`;
+      return function () {
+        document.title = "usePopcorn";
+        // console.log(`Clean up effect for movie ${title}`);
+      };
+    },
+    [title]
+  );
 
   return (
     <div className="details">
