@@ -14,7 +14,7 @@ Starting => Task #
 04- Steps => version: V(1) and V(2)
 05- Travel-List
 06- Eat-N-Split
-07- use Pop-Corn => v(1)
+07- use Pop-Corn => v(1) and v(2)  with Star Rating Program
 08- How REact Work
 
 # Challenges
