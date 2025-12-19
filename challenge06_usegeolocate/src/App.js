@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import useGeolocation from "./useGeoloction";
-
+// locator
 const App = () => {
   const [countClicks, setCountClicks] = useState(0);
   const { isLoading, position, error } = useGeolocation();

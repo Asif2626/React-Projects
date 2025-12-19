@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
 import "./App.css";
-
+// calculator
 const App = () => {
   const [amount, setAmount] = useState(1);
   const [fromCur, setFromCur] = useState("EUR");

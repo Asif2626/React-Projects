@@ -32,7 +32,6 @@ function formatDay(dateStr) {
 
 async function getWeather(location) {
   try {
-    // 1) Getting location (geocoding)
     const geoRes = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${location}`
     );

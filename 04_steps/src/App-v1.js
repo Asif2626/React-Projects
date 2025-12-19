@@ -27,10 +27,6 @@ function Steps() {
   const handleNext = () => {
     if (step < length) setStep((step) => step + 1);
     // if (step < length) setStep((step) => step + 1);
-
-    // BAD Practice
-    // test.name = "Rashid Ali";
-    // setTest({ name: "Rashid Ali" });
   };
 
   return (

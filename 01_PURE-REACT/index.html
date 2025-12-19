@@ -11,7 +11,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script>
       function App() {
-        // const time = new Date().toLocaleTimeString();
         const [time, setTime] = React.useState(new Date().toLocaleTimeString());
         React.useEffect(() => {
           setInterval(() => {

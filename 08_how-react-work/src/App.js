@@ -68,7 +68,6 @@ function TabContent({ item }) {
   // console.log("Render");
 
   function handleInc() {
-    // setLikes(likes + 1);
     setLikes((likes) => likes + 1);
   }
 

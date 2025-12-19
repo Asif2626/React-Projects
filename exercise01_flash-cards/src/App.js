@@ -8,7 +8,7 @@ export default function App() {
     </>
   );
 }
-
+// array
 const questions = [
   {
     id: 1,

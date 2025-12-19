@@ -48,6 +48,7 @@ function App() {
 function Card() {
   return (
     <div className="card">
+      {/* img */}
       <img src={profileImage} alt="Profile" className="img" />
       <h2 className="name">Asif Ali</h2>
       <p className="bio">

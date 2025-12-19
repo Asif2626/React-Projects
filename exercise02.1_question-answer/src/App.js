@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-
+// question
 const faqs = [
   {
     title: "What is React?",

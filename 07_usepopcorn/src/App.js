@@ -1,5 +1,5 @@
 import React from "react";
-// import Star from "./Star"; // Star
+// import Star from "./Star"; // add Star
 // import App_v1 from "./App_v1"; // in usepopcorn using useState, using useEffect
 // import App_v2 from "./App_v2"; // in usepopcorn using useRef
 import App_v3 from "./App_v3"; // in usepopcorn using custom Hook
