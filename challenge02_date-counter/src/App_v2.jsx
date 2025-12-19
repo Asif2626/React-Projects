@@ -1,14 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 
-export default function App() {
+const App_v2 = () => {
   return (
     <div className="app-container">
       <h1 className="title">Date Counter App</h1>
       <Counter />
     </div>
   );
-}
+};
+
+export default App_v2;
 
 function Counter() {
   const [count, setCount] = useState(0);

@@ -1,3 +1,4 @@
+/* General app container */
 .app-container {
   background-color: #f7f7f7;
   font-family: "Arial", sans-serif;
@@ -9,12 +10,14 @@
   padding: 20px;
 }
 
+/* Title */
 .title {
   font-size: 2rem;
   color: #333;
   margin-bottom: 20px;
 }
 
+/* Counter box */
 .counter-container {
   background-color: #fff;
   padding: 20px;
@@ -24,6 +27,7 @@
   width: 300px;
 }
 
+/* Controls layout */
 .step-controls,
 .count-controls {
   display: flex;
@@ -31,6 +35,7 @@
   margin-bottom: 20px;
 }
 
+/* Buttons */
 button {
   background-color: #4caf50;
   border: none;
@@ -47,6 +52,7 @@ button:hover {
   background-color: #45a049;
 }
 
+/* Texts inside controls */
 .step-text,
 .count-text {
   font-size: 18px;
@@ -55,12 +61,14 @@ button:hover {
   line-height: 40px;
 }
 
+/* Result text */
 .result-text {
   font-size: 18px;
   color: #333;
   margin-top: 20px;
 }
 
+/* Date styling */
 .date {
   font-weight: bold;
   color: #4caf50;
