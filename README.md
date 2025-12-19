@@ -14,8 +14,11 @@ Starting => Task #
 04- Steps => version: V(1) and V(2)
 05- Travel-List
 06- Eat-N-Split
-07- use Pop-Corn => v(1) and v(2)  with Star Rating Program
+07- use Pop-Corn => v(1) and v(2) with Star Rating Program
 08- How REact Work
+09- Classy-Weather
+009- Function-Weather
+10- React-Quiz
 
 # Challenges
 
@@ -24,6 +27,8 @@ Challenges => Practice #
 02- Date-Counter => version: V(1) and V(2)
 03- Tip Calculator
 04- Text Expander Component
+05- Currency-Convertor
+06- Use-GeoLocation
 
 # Exercise
 
