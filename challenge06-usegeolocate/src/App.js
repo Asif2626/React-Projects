@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import useGeolocation from "./useGeoloction";
 
-function App() {
+const App = () => {
+  const [countClicks, setCountClicks] = useState(0);
+  const { isLoading, position, error } = useGeolocation();
+
+  function handleClick() {
+    setCountClicks((count) => count + 1);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <div className="app">
+      <button onClick={handleClick} disabled={isLoading}>
+        Get my position
+      </button>
+
+      <div className="status">
+        {isLoading && <p className="loading">Loading position...</p>}
+        {error && <p className="error">{error}</p>}
+      </div>
+
+      {!isLoading && !error && position.lat && position.lng && (
+        <p className="location">
+          Your GPS position:
+          <br />
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={`https://www.openstreetmap.org/#map=16/${position.lat}/${position.lng}`}
+          >
+            {position.lat}, {position.lng}
+          </a>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      )}
+
+      <p className="counter">You requested position {countClicks} times</p>
     </div>
   );
-}
+};
 
 export default App;
