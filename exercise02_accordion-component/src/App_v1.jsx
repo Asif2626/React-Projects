@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+
 // question
 const faqs = [
   {
@@ -44,13 +45,15 @@ const faqs = [
   },
 ];
 
-export default function App() {
+const App_v1 = () => {
   return (
     <div>
       <Accordion data={faqs} />
     </div>
   );
-}
+};
+
+export default App_v1;
 
 function Accordion({ data }) {
   return (

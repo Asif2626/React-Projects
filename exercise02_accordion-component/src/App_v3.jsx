@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./App.css";
-// Question
+import "./index.css";
+// question
 const faqs = [
   {
     title: "What is React?",
@@ -44,61 +44,39 @@ const faqs = [
   },
 ];
 
-export default function App() {
+function App_v3() {
   return (
     <div>
       <Accordion data={faqs} />
     </div>
   );
 }
+export default App_v3;
 
 function Accordion({ data }) {
-  const [curOpen, setCurOpen] = useState(null);
   return (
     <div className="accordion">
       {data.map((el, i) => (
-        <AccordionItem
-          curOpen={curOpen}
-          onOpen={setCurOpen}
-          title={el.title}
-          num={i}
-          key={i}
-        >
-          {el.text}
-        </AccordionItem>
+        <AccordionItem title={el.title} text={el.text} num={i} key={i} />
       ))}
-      <AccordionItem
-        curOpen={curOpen}
-        onOpen={setCurOpen}
-        title="Test 1"
-        num={22}
-        key="test 1"
-      >
-        <p>Allow React developers to: </p>
-        <ul>
-          <li>Break up UI into Components</li>
-          <li>Make Components Resuable</li>
-          <li>Place state efficiently</li>
-        </ul>
-      </AccordionItem>
     </div>
   );
 }
 
-function AccordionItem({ num, title, curOpen, onOpen, children }) {
-  const isOpen = num === curOpen;
-  function handleToggle() {
-    onOpen(isOpen ? null : num);
-  }
+function AccordionItem({ num, title, text }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
+    <div
+      className={`item ${isOpen ? "open" : ""}`}
+      onClick={() => setIsOpen(!isOpen)}
+    >
       <div className="header">
-        <span className="number">{num < 9 ? `0${num + 1}` : num + 1}</span>
+        <span className="number">{num + 1}</span>
         <span className="text">{title}</span>
         <span className="icon">{isOpen ? "-" : "+"}</span>
       </div>
-      {isOpen && <div className="content-box">{children}</div>}
+      {isOpen && <div className="content-box">{text}</div>}
     </div>
   );
 }

@@ -1,0 +1,177 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Accordion container */
+.accordion {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion item */
+.item {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect on accordion item */
+.item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Accordion header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+/* Number for each item */
+.number {
+  font-weight: bold;
+  color: #4caf50;
+  margin-right: 12px;
+}
+
+/* Accordion title */
+.text {
+  flex-grow: 1;
+  color: #333;
+}
+
+/* Icon (either + or -) */
+.icon {
+  font-size: 24px;
+  color: #4caf50;
+}
+
+/* Content box that appears when the item is open */
+.content-box {
+  padding: 15px;
+  background-color: #fafafa;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Open state styles for accordion */
+.item.open {
+  border-top: 4px solid #087f5b;
+  background-color: #f4fdf2; /* Light green for open state */
+}
+
+/* Smooth transition for content expansion */
+.content-box {
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.item.open .content-box {
+  max-height: 1000px; /* A large enough max-height for the content */
+}
+
+.item.open .number,
+.item.open .text {
+  color: #087f5b;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Accordion container */
+.accordion {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion item */
+.item {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect on accordion item */
+.item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Accordion header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+/* Number for each item */
+.number {
+  font-weight: bold;
+  color: #4caf50;
+  margin-right: 12px;
+}
+
+/* Accordion title */
+.text {
+  flex-grow: 1;
+  color: #333;
+}
+
+/* Icon (either + or -) */
+.icon {
+  font-size: 24px;
+  color: #4caf50;
+}
+
+/* Content box that appears when the item is open */
+.content-box {
+  padding: 15px;
+  background-color: #fafafa;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Open state styles for accordion */
+.item.open {
+  border-top: 4px solid #087f5b;
+  background-color: #f4fdf2; /* Light green for open state */
+}
+
+/* Smooth transition for content expansion */
+.content-box {
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.item.open .content-box {
+  max-height: 1000px; /* A large enough max-height for the content */
+}
+
+.item.open .number,
+.item.open .text {
+  color: #087f5b;
+}
