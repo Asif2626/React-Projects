@@ -24,7 +24,7 @@ Starting => Task #
 
 Challenges => Practice #
 01- Profile-Card
-02- Date-Counter => version: V(1) and V(2)
+02- Date-Counter => version: V(1), V(2)
 03- Tip Calculator
 04- Text Expander Component
 05- Currency-Convertor
@@ -34,5 +34,4 @@ Challenges => Practice #
 
 Exercise => Solve #
 01- Flash Cards
-02- Accordion Component => version: V(1) and V(2)
-002- Question Answer
+02- Accordion Component => version: V(1),V(2),V(3)
