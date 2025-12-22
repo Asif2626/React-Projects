@@ -14,7 +14,7 @@ Starting => Task #
 04- Steps => version: V(1) and V(2)
 05- Travel-List
 06- Eat-N-Split
-07- use Pop-Corn => v(1) and v(2) with Star Rating Program
+07- use Pop-Corn => v(1) and v(2) with Star Rating Program, Using useState, useEffect, useRef, Custom Hook
 08- How REact Work
 09- Classy-Weather
 009- Function-Weather
@@ -24,7 +24,7 @@ Starting => Task #
 
 Challenges => Practice #
 01- Profile-Card
-02- Date-Counter => version: V(1) and V(2)
+02- Date-Counter => version: V(1), V(2)
 03- Tip Calculator
 04- Text Expander Component
 05- Currency-Convertor
@@ -34,5 +34,4 @@ Challenges => Practice #
 
 Exercise => Solve #
 01- Flash Cards
-02- Accordion Component => version: V(1) and V(2)
-002- Question Answer
+02- Accordion Component => version: V(1),V(2),V(3)
