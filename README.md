@@ -30,6 +30,7 @@ Challenges => Practice #
 04- Text Expander Component
 05- Currency-Convertor
 06- Use-GeoLocation
+07- Bank-Account using useReducer
 
 # Exercise
 
