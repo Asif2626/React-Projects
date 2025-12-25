@@ -5,6 +5,7 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
     <li>
       <div>
         <p>
+          <p>testing</p>
           <span>{quantity}&times;</span> {name}
         </p>
         <p>{formatCurrency(totalPrice)}</p>
