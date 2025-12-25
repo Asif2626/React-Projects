@@ -15,11 +15,12 @@ Starting => Task #
 05- Travel-List
 06- Eat-N-Split
 07- use Pop-Corn => v(1) and v(2) with Star Rating Program, Using useState, useEffect, useRef, Custom Hook
-08- How REact Work
+08- How React Work
 09- Classy-Weather
 09- Function-Weather
 10- React-Quiz
 11- WorldWise
+12- Atomic Blog
 
 # Challenges
 
@@ -30,6 +31,7 @@ Challenges => Practice #
 04- Text Expander Component
 05- Currency-Convertor
 06- Use-GeoLocation
+07- Bank-Account using useReducer
 
 # Exercise
 
