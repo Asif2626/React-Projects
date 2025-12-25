@@ -1,6 +1,18 @@
 {
   "cities": [
     {
+      "cityName": "Lahore",
+      "country": "Pakistan",
+      "code": "PK",
+      "date": "2026-01-10T15:59:59.138Z",
+      "notes": "My favorite city so far!",
+      "position": {
+        "lat": 31.5497,
+        "lng": 74.3436
+      },
+      "id": 73933385
+    },
+    {
       "cityName": "Lisbon",
       "country": "Portugal",
       "code": "PT",

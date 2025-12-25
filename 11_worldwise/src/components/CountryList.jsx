@@ -5,7 +5,8 @@ import styles from "./CountryList.module.css";
 import { useCities } from "../contexts/CitiesContext";
 
 const CountryList = () => {
-  const { cities, isLoading } = useCities();
+  const { cities, isLoading, deleteCity } = useCities();
+
   if (isLoading) return <Spinner />;
 
   if (!cities.length) {
@@ -14,6 +15,7 @@ const CountryList = () => {
     );
   }
 
+  // Get unique countries
   const countries = cities.reduce((arr, city) => {
     if (!arr.some((el) => el.country === city.country)) {
       arr.push(city);
@@ -23,8 +25,8 @@ const CountryList = () => {
 
   return (
     <ul className={styles.countryList}>
-      {countries.map((country, index) => (
-        <CountryItem key={`${country.country}-${index}`} country={country} />
+      {countries.map((country) => (
+        <CountryItem key={country.id} country={country} onDelete={deleteCity} />
       ))}
     </ul>
   );
