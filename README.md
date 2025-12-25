@@ -20,6 +20,7 @@ Starting => Task #
 09- Function-Weather
 10- React-Quiz
 11- WorldWise
+12- Atomic Blog
 
 # Challenges
 
