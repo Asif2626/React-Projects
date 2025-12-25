@@ -2,4 +2,4 @@
 
 # Project
 
-# The React Quiz App
+# The World Wise
