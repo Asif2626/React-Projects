@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useCities } from "../contexts/CitiesContext";
-
 import Flag from "react-world-flags";
 
 const formatDate = (date) =>
@@ -14,10 +13,13 @@ const formatDate = (date) =>
     : "";
 const CityItem = ({ city }) => {
   // const CityItem = ({ city, onDelete }) => {
-  const { currentCity } = useCities();
+  const { currentCity, deleteCity } = useCities();
   const { cityName, code, date, id, position } = city;
-
   if (!position) return null;
+  function handleDelete(e) {
+    e.preventDefault();
+    deleteCity(id);
+  }
 
   return (
     <li>
@@ -32,12 +34,7 @@ const CityItem = ({ city }) => {
         )}
         <h3 className={styles.cityName}>{cityName}</h3>
         <time className={styles.date}>{formatDate(date)}</time>
-        <button
-          className={styles.deleteBtn}
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <button className={styles.deleteBtn} onClick={handleDelete}>
           &times;
         </button>
         {/* {onDelete && (

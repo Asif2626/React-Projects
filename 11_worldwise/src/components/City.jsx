@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
-import Spinner from "./Spinner";
-import styles from "./City.module.css";
 import BackButton from "./BackButton";
+import styles from "./City.module.css";
+import Spinner from "./Spinner";
+import Flag from "react-world-flags";
 
 const formatDate = (date) =>
   date
@@ -25,7 +25,7 @@ function City() {
   }, [id]);
   // }, [id, getCity]);
 
-  const { cityName, emoji, date, notes } = currentCity;
+  const { cityName, code, date, notes } = currentCity;
   if (isLoading || !currentCity) return <Spinner />;
 
   return (
@@ -33,7 +33,13 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          {emoji && <span>{emoji}</span>} {cityName}
+          {code && (
+            <Flag
+              code={code}
+              style={{ width: 32, height: 24, marginRight: 8 }}
+            />
+          )}
+          {cityName}
         </h3>
       </div>
 

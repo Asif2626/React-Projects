@@ -6,6 +6,9 @@ const BASE_URL = `http://localhost:8000`;
 // 1. Create context
 const CitiesContext = createContext();
 
+// const initialState = { cities: [], isLoading: false, currentCity: {} };
+// function reducer(state, action) {}
+
 const CitiesProvider = ({ children }) => {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,9 +56,26 @@ const CitiesProvider = ({ children }) => {
       });
       const data = await res.json();
       // Update cities state with newly added city
-      setCities((prevCities) => [...prevCities, data]);
+      setCities((cities) => [...cities, data]);
     } catch (err) {
-      alert("There was an error creating the city...");
+      alert("There was an error creating city...");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  // delete city
+  async function deleteCity(id) {
+    try {
+      setIsLoading(true);
+      await fetch(`${BASE_URL}/cities/${id}`, {
+        method: "DELETE",
+      });
+      // Update cities state with delete city
+      setCities((prev) => prev.filter((c) => c.id !== id));
+    } catch (err) {
+      alert("There was an error deleting city...");
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -64,7 +84,14 @@ const CitiesProvider = ({ children }) => {
 
   return (
     <CitiesContext.Provider
-      value={{ cities, isLoading, currentCity, getCity, createCity }}
+      value={{
+        cities,
+        isLoading,
+        currentCity,
+        getCity,
+        createCity,
+        deleteCity,
+      }}
     >
       {children}
     </CitiesContext.Provider>
@@ -74,7 +101,7 @@ const CitiesProvider = ({ children }) => {
 // Custom hook to use the Cities context
 function useCities() {
   const context = useContext(CitiesContext);
-  if (!context)
+  if (context === undefined)
     throw new Error("useCities must be used within a CitiesProvider");
   return context;
 }

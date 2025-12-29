@@ -15,7 +15,6 @@ const CountryList = () => {
     );
   }
 
-  // Get unique countries
   const countries = cities.reduce((arr, city) => {
     if (!arr.some((el) => el.country === city.country)) {
       arr.push(city);
