@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Lahore",
-      "country": "Pakistan",
-      "code": "PK",
-      "date": "2026-01-10T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 31.5497,
-        "lng": 74.3436
-      },
-      "id": 73933385
-    },
-    {
       "cityName": "Lisbon",
       "country": "Portugal",
       "code": "PT",
@@ -40,16 +28,37 @@
       "cityName": "Berlin",
       "country": "Germany",
       "code": "DE",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "date": "2025-12-29T11:23:24.280Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": "52.40241887397332",
+        "lng": "13.535156250000002"
       },
-      "id": 98443197
+      "id": 73933386
     },
     {
-      "id": 98443198
+      "cityName": "Lahore",
+      "country": "Pakistan",
+      "code": "PK",
+      "date": "2025-12-29T12:15:04.680Z",
+      "notes": "Learn\n",
+      "position": {
+        "lat": "31.372399104880525",
+        "lng": "74.33349609375001"
+      },
+      "id": 73933387
+    },
+    {
+      "cityName": "Ankara",
+      "country": "Turkiye",
+      "code": "TR",
+      "date": "2025-12-29T12:17:17.537Z",
+      "notes": "Tk",
+      "position": {
+        "lat": "39.7240885773337",
+        "lng": "32.98095703125001"
+      },
+      "id": 73933388
     }
   ]
 }
