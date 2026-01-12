@@ -24,6 +24,7 @@ Starting => Task #
 13- workout Timer
 15- Redux RTK(Redux Tool Kit)
 16- Fast React Pizza => Style with Tailwind
+17- The Wild Oasis
 
 # Challenges
 
