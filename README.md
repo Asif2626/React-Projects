@@ -25,6 +25,7 @@ Starting => Task #
 15- Redux RTK(Redux Tool Kit)
 16- Fast React Pizza => Style with Tailwind
 17- The Wild Oasis
+28- AdvancedReactPatterns
 
 # Challenges
 
