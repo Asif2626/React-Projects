@@ -1,5 +1,83 @@
 import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
+import { PAGE_SIZE } from "../utils/constant";
+
+// Map URL values to actual DB column values
+const statusMap = {
+  "checked-out": "checked-out",
+  "checked-in": "checked-in",
+  unconfirmed: "unconfirmed",
+};
+
+// Map sort fields to Supabase column names
+const sortFieldMap = {
+  startDate: "startDate",
+  totalPrice: "totalPrice",
+};
+
+export async function getBookings({ filter, sortBy, page }) {
+  // First, get total count for this filter
+  const { count: totalCount, error: countError } = await supabase
+    .from("bookings")
+    .select("*", { count: "exact", head: true }) // head: true returns only count
+    .match(
+      filter && filter.field === "status"
+        ? { status: statusMap[filter.value] }
+        : {},
+    );
+
+  if (countError) {
+    console.error("Supabase count error:", countError);
+    return { data: [], count: 0 };
+  }
+
+  const pageCount = Math.ceil(totalCount / PAGE_SIZE) || 1;
+  const safePage = page > pageCount ? pageCount : page;
+
+  let query = supabase.from("bookings").select(
+    `
+      id,
+      created_at,
+      startDate,
+      endDate,
+      numNights,
+      numGuests,
+      status,
+      totalPrice,
+      cabins(name),
+      guests(fullName, email)
+      `,
+    { count: "exact" },
+  );
+
+  // ----- FILTER -----
+  if (filter && filter.field && filter.value) {
+    const value =
+      filter.field === "status" ? statusMap[filter.value] : filter.value;
+    query = query.eq(filter.field, value);
+  }
+
+  // ----- SORT -----
+  if (sortBy && sortBy.field) {
+    const field = sortFieldMap[sortBy.field] || sortBy.field;
+    query = query.order(field, { ascending: sortBy.direction === "asc" });
+  }
+
+  // ----- PAGINATION -----
+  const from = (safePage - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
+  query = query.range(from, to);
+
+  // ----- EXECUTE -----
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("Supabase error:", error);
+    return { data: [], count: totalCount || 0 }; // safe fallback
+  }
+
+  return { data: data || [], count: totalCount || 0 };
+}
 
 export async function getBooking(id) {
   const { data, error } = await supabase
@@ -55,7 +133,7 @@ export async function getStaysTodayActivity() {
     .from("bookings")
     .select("*, guests(fullName, nationality, countryFlag)")
     .or(
-      `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()})`
+      `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()})`,
     )
     .order("created_at");
 
