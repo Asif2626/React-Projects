@@ -9,15 +9,14 @@ import {
 
 import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
-
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
+/* ---------------- STYLES ---------------- */
+
 const StyledBookingDataBox = styled.section`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-
   overflow: hidden;
 `;
 
@@ -25,26 +24,23 @@ const Header = styled.header`
   background-color: var(--color-brand-500);
   padding: 2rem 4rem;
   color: #e0e7ff;
-  font-size: 1.8rem;
-  font-weight: 500;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
   svg {
-    height: 3.2rem;
     width: 3.2rem;
+    height: 3.2rem;
   }
 
-  & div:first-child {
+  & div {
     display: flex;
     align-items: center;
     gap: 1.6rem;
     font-weight: 600;
-    font-size: 1.8rem;
   }
 
-  & span {
+  span {
     font-family: "Sono";
     font-size: 2rem;
     margin-left: 4px;
@@ -70,27 +66,28 @@ const Guest = styled.div`
 
 const Price = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 2.4rem;
   padding: 1.6rem 3.2rem;
   border-radius: var(--border-radius-sm);
-  margin-top: 2.4rem;
 
-  background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
-  color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+  background-color: ${({ $isPaid }) =>
+    $isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
 
-  & p:last-child {
+  color: ${({ $isPaid }) =>
+    $isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+
+  & p {
     text-transform: uppercase;
     font-size: 1.4rem;
     font-weight: 600;
   }
 
   svg {
-    height: 2.4rem;
+    color: currentColor;
     width: 2.4rem;
-    color: currentColor !important;
+    height: 2.4rem;
   }
 `;
 
@@ -101,7 +98,8 @@ const Footer = styled.footer`
   text-align: right;
 `;
 
-// A purely presentational component
+/* ---------------- COMPONENT ---------------- */
+
 function BookingDataBox({ booking }) {
   const {
     created_at,
@@ -115,7 +113,7 @@ function BookingDataBox({ booking }) {
     hasBreakfast,
     observations,
     isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
+    guests: { fullName, email, country, countryFlag, nationalID },
     cabins: { name: cabinName },
   } = booking;
 
@@ -125,7 +123,7 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {numNights} nights in cabin <span>{cabinName}</span>
           </p>
         </div>
 
@@ -134,15 +132,16 @@ function BookingDataBox({ booking }) {
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+          ) — {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
       </Header>
 
       <Section>
         <Guest>
-          {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
+          {countryFlag && <Flag src={countryFlag} alt={country} />}
           <p>
-            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
+            {fullName}
+            {numGuests > 1 && ` + ${numGuests - 1} guests`}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
@@ -163,10 +162,10 @@ function BookingDataBox({ booking }) {
           {hasBreakfast ? "Yes" : "No"}
         </DataItem>
 
-        <Price className={isPaid ? "paid" : "unpaid"}>
-          <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
+        {/* PRICE STATUS */}
+        <Price $isPaid={isPaid}>
+          <DataItem icon={<HiOutlineCurrencyDollar />} label="Total price">
             {formatCurrency(totalPrice)}
-
             {hasBreakfast &&
               ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
                 extrasPrice,

@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
+import {
+  HiArrowDownOnSquare,
+  HiArrowUpOnSquare,
+  HiEye,
+  HiTrash,
+} from "react-icons/hi2";
+import { formatDistanceFromNow } from "../../utils/helpers";
+import { formatCurrency } from "../../utils/helpers";
+import { useNavigate } from "react-router-dom";
+import { useCheckout } from "../check-in-out/useCheckout";
+import { useDeleteBooking } from "../check-in-out/useDeleteBooking";
 
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
-
-import { formatCurrency } from "../../utils/helpers";
-import { formatDistanceFromNow } from "../../utils/helpers";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiEye } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
 import Modal from "../../ui/Modal";
 
 const Cabin = styled.div`
@@ -53,6 +60,8 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
+  const { deleteBooking, isDeleting } = useDeleteBooking();
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -107,12 +116,30 @@ function BookingRow({
             )}
 
             {status === "checked-in" && (
-              <Menus.Button icon={<HiArrowDownOnSquare />} onClick={() => {}}>
+              <Menus.Button
+                icon={<HiArrowUpOnSquare />}
+                onClick={() => checkout({ bookingId })}
+                disabled={isCheckingOut}
+              >
                 Check out
               </Menus.Button>
             )}
+
+            <Modal.Open opens="delete">
+              <Menus.Button icon={<HiTrash />}>Delete Booking</Menus.Button>
+            </Modal.Open>
           </Menus.List>
         </Menus.Menu>
+
+        <Modal.Window name="delete">
+          <ConfirmDelete
+            resourceName="booking"
+            disabled={isDeleting}
+            onConfirm={() => {
+              deleteBooking(bookingId);
+            }}
+          />
+        </Modal.Window>
       </Modal>
     </Table.Row>
   );
