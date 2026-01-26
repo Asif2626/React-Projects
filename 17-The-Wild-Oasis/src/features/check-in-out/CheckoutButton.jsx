@@ -5,8 +5,11 @@ function CheckoutButton({ bookingId }) {
   const { checkout, isCheckingOut } = useCheckout();
 
   function handleCheckout() {
-    if (isCheckingOut) return;
-    checkout(bookingId);
+    if (!bookingId || isNaN(Number(bookingId))) {
+      console.error("Cannot checkout: invalid booking ID", bookingId);
+      return;
+    }
+    checkout({ bookingId });
   }
 
   return (
@@ -14,7 +17,7 @@ function CheckoutButton({ bookingId }) {
       variation="primary"
       size="small"
       onClick={handleCheckout}
-      disabled={isCheckingOut}
+      disabled={isCheckingOut || !bookingId}
       aria-busy={isCheckingOut}
     >
       {isCheckingOut ? "Checking out..." : "Check out"}

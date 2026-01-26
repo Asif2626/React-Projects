@@ -149,6 +149,12 @@ export async function getStaysTodayActivity() {
 }
 
 export async function updateBooking(id, obj) {
+  // Validate the ID
+  if (!id || isNaN(Number(id))) {
+    console.error("Cannot update booking: invalid or missing ID", id);
+    throw new Error("Booking ID is required and must be a number");
+  }
+
   const { data, error } = await supabase
     .from("bookings")
     .update(obj)
@@ -157,9 +163,10 @@ export async function updateBooking(id, obj) {
     .single();
 
   if (error) {
-    console.error(error);
+    console.error("Supabase update error:", error);
     throw new Error("Booking could not be updated");
   }
+
   return data;
 }
 
